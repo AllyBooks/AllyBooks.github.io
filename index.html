@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AllyBooksWeb</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="leaf-container"></div>
+
+    <div class="container">
+        <img id="ava" src="img/ava.jpg" alt="Avatar"><br><br>
+        <h1>Ally Books</h1>
+        <div class="buttons">
+            <a href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
+            <a href="https://www.tiktok.com/@ally_books_comics?_t=8pgz6AAP4lM&_r=1" target="_blank">TikTok</a>
+            <a href="https://pin.it/WszvmJ1Yk" target="_blank">Pinterest</a>
+            <a href="https://ficbook.net/authors/01960fc7-b01c-70a8-bb42-298e2af331d2" target="_blank">Ficbook</a>
+        </div>
+
+        <div id="animation">
+            <button type="button" id="setting-btn">
+              <img src="img/setting.PNG" alt="Ustawienia">
+            </button><br>
+          
+            <section id="setting-panel" class="tab-content">
+              <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
+              <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
+              <button class="animation_btn" onclick="toggleAnimation(4)">Stop</button>
+            </section>
+          </div>
+    </div>
+
+    <script src="tabView.js"></script>
+    <script src="leaves.js"></script>
+</body>
+
+</html>
