@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Turn.js lokalnie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
+            background: linear-gradient(145deg, #f0f0f5, #ffffff);
+            color: #1c1c1e;
+        }
+
+        #flipbook {
+            width: 400px;
+            height: 300px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        #flipbook .hard {
+            background: #f2f2f7;
+            font-weight: 600;
+            line-height: 300px;
+            text-align: center;
+            font-size: 24px;
+            color: #3a3a3c;
+            border-right: 1px solid #ddd;
+        }
+
+        #flipbook>div {
+            background: #ffffff;
+            line-height: 1.5;
+            text-align: left;
+            font-size: 17px;
+            border-right: 1px solid #eee;
+            padding: 20px 25px;
+            color: #1c1c1e;
+        }
+
+        #flipbook>div:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="flipbook">
+        <div class="hard"> HappyBirthday </div>
+        <div class="hard"></div>
+        <div style="white-space: pre-line; padding: 10px; font-size: 16px; line-height: 1.4;">
+            С днюшкой 🌍✈️<br>
+            То не обычная открытка…<br>
+            …а небольшое путешествие между страницами.<br>
+            Ну ты понял, да? 😉
+        </div>
+        <div style="white-space: pre-line; padding: 10px; font-size: 16px; line-height: 1.4;">
+            Пусть жизнь будет как твоё идеальное путешествие…<br>
+            …с новыми местами 🌍<br>
+            …душевными встречами 👥<br>
+            …и моментами, от которых сердце трепещет 💫
+        </div>
+        <div style="white-space: pre-line; padding: 10px; font-size: 16px; line-height: 1.4;">
+            Желаю тебе больше чувств, чем у любого Netflix-сценариста 😄<br>
+            и побольше кайфа от каждого дня ☀️<br>
+            чтобы даже утренний кофе говорил: «Ну да, жизнь кайф» ☕✨
+        </div>
+        <div style="white-space: pre-line; padding: 10px; font-size: 16px; line-height: 1.4;">
+            Я хотел подарить тебе что-то необычное…<br>
+            …что останется в памяти, как фото с идеальной поездки 📸<br>
+            (вот тебе это 🌍🍂)<br>
+            От Вадима, с уважением, теплом и без пафоса 😉
+        </div>
+        <div class="hard"></div>
+        <div class="hard"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="turn.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#flipbook").turn({
+                width: 400,
+                height: 300,
+                autoCenter: true
+            });
+        });
+    </script>
+</body>
+
+</html>
