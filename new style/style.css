@@ -75,6 +75,7 @@ body {
 /* Kontener przycisków */
 .grid {
   display: grid;
+  margin: auto;
   grid-template-columns: 1fr 1fr; /* dwie równe kolumny */
   grid-template-areas:
     "btn-1 btn-1"
@@ -82,7 +83,7 @@ body {
     "btn-4 btn-5";
   gap: 10px;
   justify-content: center;
-  width: 100%;
+  width: 60%;
 }
 
 .btn-1 { grid-area: btn-1; }
