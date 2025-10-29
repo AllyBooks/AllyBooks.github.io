@@ -10,6 +10,21 @@
   box-sizing: border-box;
 }
 
+html::before,
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+  background-size: 400% 400%;
+  animation: bgPulse 15s ease infinite;
+}
+
+
 /* Базовые параметры страницы */
 html,
 body {
@@ -44,9 +59,6 @@ h1 {
 
 /* Стили для body — фон и выравнивание */
 body {
-  background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
-  background-size: 400% 400%;
-  animation: bgPulse 15s ease infinite;
 
   display: flex;
   justify-content: center;
