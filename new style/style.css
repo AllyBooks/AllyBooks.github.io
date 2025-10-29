@@ -1,91 +1,74 @@
 @font-face {
-  font-family: maksFont;
-  src: url(MultiroundPro.otf);
+font-family: maksFont;
+src: url(MultiroundPro.otf);
 }
 
 /* Сброс отступов и настройка box-sizing */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
-
-html::before,
-body::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: env(safe-area-inset-left);
-  right: env(safe-area-inset-right);
-  bottom: -100px;
-  z-index: -1;
-
-  background: radial-gradient(circle, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
-  background-size: 400% 400%;
-  animation: bgPulse 15s ease infinite;
-}
-
 
 /* Базовые параметры страницы */
 html,
 body {
-  height: 100%;
-  min-height: -webkit-fill-available;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
+height: 100%;
+overflow: hidden;
+background-color: aquamarine;
+font-family: Arial, sans-serif;
 }
 
 /* Анимация пульсации заднего фона */
 @keyframes bgPulse {
-  0% {
-    background-position: 0% 50%;
-  }
+0% {
+background-position: 0% 50%;
+}
 
-  50% {
-    background-position: 100% 50%;
-  }
+50% {
+background-position: 100% 50%;
+}
 
-  100% {
-    background-position: 0% 50%;
-  }
+100% {
+background-position: 0% 50%;
+}
 }
 
 h1 {
-  font-family: maksFont;
+font-family: maksFont;
 }
 
-/* Стили для body — фон и выравнивание */
-body {
+/* Стили для background — фон и выравнивание */
+.background  {
+height: 100%;
+background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+background-size: 400% 400%;
+animation: bgPulse 15s ease infinite;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 /* Центровка основного содержимого */
 .container {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
+position: relative;
+z-index: 1;
+text-align: center;
+color: white;
 }
 
 #leaf-container {
-  position: fixed;
-  top: -50px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh + 80px);
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
 
-  pointer-events: none;
-  overflow: hidden;
-  perspective: 800px;
-  z-index: 0;
+pointer-events: none;
+overflow: hidden;
+perspective: 800px;
+z-index: 0;
 }
 
 
@@ -94,15 +77,15 @@ body {
 /* Kontener przycisków */
 .grid {
   display: grid;
-  margin: auto;
-  grid-template-columns: 1fr 1fr; /* dwie równe kolumny */
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "btn-1 btn-1"
     "btn-2 btn-3"
     "btn-4 btn-5";
   gap: 10px;
   justify-content: center;
-  width: 70%;
+  margin: auto;
+  width: 80%;
 }
 
 .btn-1 { grid-area: btn-1; }
@@ -122,238 +105,237 @@ body {
 }
 
 .buttons {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
+margin-top: 20px;
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+justify-content: center;
 }
 
 /* Styl szkła CRYSTAL */
 .buttons a {
+  width: 125px;
+
   
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 12px 28px;
+display: inline-block;
+position: relative;
+overflow: hidden;
+padding: 12px 28px;
 
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-  color: #ffffff;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.3px;
+color: #ffffff;
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+/* 🧊 bardziej przezroczysty gradient */
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+border: 1px solid rgba(255, 255, 255, 0.25);
 
-  /* głębszy efekt szkła */
-  backdrop-filter: blur(4px) saturate(120%);
-  -webkit-backdrop-filter: blur(4px) saturate(120%);
+/* głębszy efekt szkła */
+backdrop-filter: blur(4px) saturate(120%);
+-webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* miększy cień */
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
+/* miększy cień */
+box-shadow:
+inset 0 1px 1px rgba(255, 255, 255, 0.25),
+0 8px 24px rgba(255, 255, 255, 0.08);
 
-  transition: all 0.3s ease;
+transition: all 0.3s ease;
 }
 
 /* Subtelny połysk przy hover */
 .buttons a::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -30%;
-  width: 70%;
-  height: 200%;
-  transform: rotate(25deg);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  filter: blur(10px);
-  opacity: 0;
-  transition: all 0.5s ease;
-  pointer-events: none;
+content: "";
+position: absolute;
+top: -50%;
+left: -30%;
+width: 70%;
+height: 200%;
+transform: rotate(25deg);
+background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+filter: blur(10px);
+opacity: 0;
+transition: all 0.5s ease;
+pointer-events: none;
 }
 
 /* Efekt najechania — lekki połysk i unoszenie */
 .buttons a:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.4),
-    0 10px 30px rgba(255, 255, 255, 0.15);
+transform: translateY(-3px) scale(1.02);
+box-shadow:
+inset 0 1px 1px rgba(255, 255, 255, 0.4),
+0 10px 30px rgba(255, 255, 255, 0.15);
 }
 
 .buttons a:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 10px 30px rgba(255, 255, 255, 0.12);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+transform: translateY(-3px) scale(1.02);
+box-shadow:
+inset 0 1px 2px rgba(255, 255, 255, 0.3),
+0 10px 30px rgba(255, 255, 255, 0.12);
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
 }
 
 .buttons a:hover::after {
-  opacity: 0.8;
-  left: 130%;
+opacity: 0.8;
+left: 130%;
 }
 
 /* Стили для падающего листа */
 .leaf {
-  position: absolute;
-  top: 0;
-  width: 30px;
-  opacity: 1;
-  pointer-events: none;
+position: absolute;
+top: 0;
+width: 30px;
+opacity: 1;
+pointer-events: none;
 
-  transition: opacity 1s ease;
-  animation: fallFade 0.5s ease-in;
+transition: opacity 1s ease;
+animation: fallFade 0.5s ease-in;
 }
 
 @keyframes fallFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
+0% {
+opacity: 0;
+transform: scale(0.5);
+}
 
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+100% {
+opacity: 1;
+transform: scale(1);
+}
 }
 
 /* Плавное исчезновение */
 .fade-out {
-  opacity: 0;
+opacity: 0;
 }
 
 /* Аватарка — круглая, с белой рамкой */
 #ava {
-  z-index: 1;
+z-index: 1;
 
-  width: 200px;
-  height: 200px;
+width: 200px;
+height: 200px;
 
-  border-radius: 50%;
-  border: 4px solid white;
-  object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  animation: pulse 3.5s infinite;
+border-radius: 50%;
+border: 4px solid white;
+object-fit: cover;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+animation: pulse 3.5s infinite;
 }
 
 @keyframes pulse {
 
-  0%,
-  100% {
-    transform: scale(1);
-  }
+0%,
+100% {
+transform: scale(1);
+}
 
-  50% {
-    transform: scale(1.07);
-  }
+50% {
+transform: scale(1.07);
+}
 }
 
 #animation {
-  position: fixed;
-  bottom: 10px;
-  right: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  transform: translateX(90%);
-  transition: transform 0.4s ease;
-  z-index: 999;
+position: fixed;
+bottom: 10px;
+right: 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 10px;
+transform: translateX(90%);
+transition: transform 0.4s ease;
+z-index: 999;
 }
 
 #animation.open {
-  transform: translateX(5%);
-  /* Wyjeżdża */
+transform: translateX(5%);
+/* Wyjeżdża */
 }
 
 /* ⚙️ przycisk */
 #setting-btn {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 10px 10px 7px 10px;
+display: inline-block;
+position: relative;
+overflow: hidden;
+padding: 10px 10px 7px 10px;
 
-  border-radius: 100%;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.3px;
-  color: #ffffff;
+border-radius: 100%;
+text-decoration: none;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.3px;
+color: #ffffff;
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+/* 🧊 bardziej przezroczysty gradient */
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+border: 1px solid rgba(255, 255, 255, 0.25);
 
-  /* głębszy efekt szkła */
-  backdrop-filter: blur(4px) saturate(120%);
-  -webkit-backdrop-filter: blur(4px) saturate(120%);
+/* głębszy efekt szkła */
+backdrop-filter: blur(4px) saturate(120%);
+-webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* miększy cień */
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
+/* miększy cień */
+box-shadow:
+inset 0 1px 1px rgba(255, 255, 255, 0.25),
+0 8px 24px rgba(255, 255, 255, 0.08);
 
-  transition: all 0.3s ease;
+transition: all 0.3s ease;
 }
 
 #setting-btn img {
-  height: 17px;
+height: 17px;
 }
 
 #setting-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(1.1);
+background: rgba(255, 255, 255, 0.4);
+transform: scale(1.1);
 }
 
 /* przyciski animacji */
 /* .tab-content {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  border: 1px solid white;
-  border-radius: 8px;
-  padding: 10px;
+ display: flex;
+ flex-direction: row;
+ gap: 10px;
+ background: rgba(255, 255, 255, 0.1);
+ backdrop-filter: blur(6px);
+ border: 1px solid white;
+ border-radius: 8px;
+ padding: 10px;
 } */
 
 .animation_btn {
-  font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
-  font-variant-emoji: text;
+display: inline-block;
+position: relative;
+overflow: hidden;
+padding: 8px 14px;
 
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  padding: 8px 14px;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+font-size: 15px;
+letter-spacing: 0.3px;
+color: #ffffff;
 
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-  color: #ffffff;
+/* 🧊 bardziej przezroczysty gradient */
+background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+border: 1px solid rgba(255, 255, 255, 0.25);
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+/* głębszy efekt szkła */
+backdrop-filter: blur(4px) saturate(120%);
+-webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* głębszy efekt szkła */
-  backdrop-filter: blur(4px) saturate(120%);
-  -webkit-backdrop-filter: blur(4px) saturate(120%);
+/* miększy cień */
+box-shadow:
+inset 0 1px 1px rgba(255, 255, 255, 0.25),
+0 8px 24px rgba(255, 255, 255, 0.08);
 
-  /* miększy cień */
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
-
-  transition: all 0.3s ease;
+transition: all 0.3s ease;
 }
 
 .animation_btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
+background: rgba(255, 255, 255, 0.3);
+transform: scale(1.05);
 }
