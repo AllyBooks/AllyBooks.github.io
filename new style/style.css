@@ -14,10 +14,10 @@ html::before,
 body::before {
   content: "";
   position: absolute;
-  top: env(safe-area-inset-top);
+  top: -100px;
   left: env(safe-area-inset-left);
   right: env(safe-area-inset-right);
-  bottom: env(safe-area-inset-bottom);
+  bottom: -100px;
   z-index: -1;
 
   background: radial-gradient(circle, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
@@ -31,7 +31,7 @@ html,
 body {
   height: 100%;
   min-height: -webkit-fill-available;
-  /* overflow: hidden; */
+  overflow: hidden;
   font-family: Arial, sans-serif;
 
   padding-top: env(safe-area-inset-top);
