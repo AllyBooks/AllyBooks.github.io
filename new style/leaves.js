@@ -3,15 +3,15 @@ let animacji_status = 0;
 let leafTimeout = null;
 
 const leafImages = [
-    'leaf1.png',
-    'leaf2.png',
-    'leaf3.png',
-    'leaf4.png',
-    'leaf5.png',
-    'leaf6.png',
-    'leaf7.png',
-    'leaf8.png',
-    'leaf9.png'
+    'leaf1.PNG',
+    'leaf2.PNG',
+    'leaf3.PNG',
+    'leaf4.PNG',
+    'leaf5.PNG',
+    'leaf6.PNG',
+    'leaf7.PNG',
+    'leaf8.PNG',
+    'leaf9.PNG'
 ];
 
 function spawnLeaf() {
