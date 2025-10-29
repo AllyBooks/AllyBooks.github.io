@@ -23,7 +23,7 @@ function spawnLeaf() {
     leaf.src = `img/${randomImage}`;
 
     leaf.style.left = `${Math.random() * 90}vw`;
-    leaf.style.top = `-50px`;
+    leaf.style.top = `-100px`;
     document.body.appendChild(leaf);
 
     // Losowe parametry wiatru i fali
@@ -47,7 +47,7 @@ function spawnLeaf() {
         leaf.style.left = `calc(${x}vw + ${offsetX}px)`;
         leaf.style.transform = `rotate(${angle}deg)`;
 
-        if (y > window.innerHeight + 40) {
+        if (y > window.innerHeight + 100) {
             clearInterval(fall);
             setTimeout(() => {
                 leaf.classList.add('fade-out');
