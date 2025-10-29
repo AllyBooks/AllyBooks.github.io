@@ -10,8 +10,7 @@ const leafImages = [
     'leaf5.PNG',
     'leaf6.PNG',
     'leaf7.PNG',
-    'leaf8.PNG',
-    'leaf9.PNG'
+    'leaf8.PNG'
 ];
 
 function spawnLeaf() {
