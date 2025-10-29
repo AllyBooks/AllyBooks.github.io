@@ -307,3 +307,13 @@ body {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: auto;
+   grid-template-areas: 
+   "btn-1"
+   "btn-2 btn-3"
+   "btn-4 btn-5";
+}
