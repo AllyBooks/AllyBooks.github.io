@@ -34,7 +34,7 @@ body::before {
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   font-family: Arial, sans-serif;
 
   padding-top: env(safe-area-inset-top);
