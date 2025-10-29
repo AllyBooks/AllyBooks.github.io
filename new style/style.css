@@ -14,12 +14,17 @@ html::before,
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: constant(safe-area-inset-top);
+  left: constant(safe-area-inset-left);
+  right: constant(safe-area-inset-right);
+  bottom: constant(safe-area-inset-bottom);
+  top: env(safe-area-inset-top);
+  left: env(safe-area-inset-left);
+  right: env(safe-area-inset-right);
+  bottom: env(safe-area-inset-bottom);
   z-index: -1;
-  background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+
+  background: radial-gradient(circle, rgba(148,187,233,1) 0%, rgba(238,174,202,1) 100%);
   background-size: 400% 400%;
   animation: bgPulse 15s ease infinite;
 }
@@ -320,6 +325,9 @@ body {
 } */
 
 .animation_btn {
+  font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+  font-variant-emoji: text;
+
   display: inline-block;
   position: relative;
   overflow: hidden;
