@@ -73,6 +73,34 @@ body {
 
 /*. button */
 /* Kontener przycisków */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dwie równe kolumny */
+  grid-template-areas:
+    "btn-1 btn-1"
+    "btn-2 btn-3"
+    "btn-4 btn-5";
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-1 { grid-area: btn-1; }
+.btn-2 { grid-area: btn-2; }
+.btn-3 { grid-area: btn-3; }
+.btn-4 { grid-area: btn-4; }
+.btn-5 { grid-area: btn-5; }
+
+.btn-1 {
+  flex: 1 1 100%;
+  text-align: center;
+}
+
+.btn-2, .btn-3, .btn-4, .btn-5 {
+  flex: 1 1 calc(50% - 16px);
+  text-align: center;
+}
+
 .buttons {
   margin-top: 20px;
   display: flex;
@@ -83,8 +111,7 @@ body {
 
 /* Styl szkła CRYSTAL */
 .buttons a {
-  width: 125px;
-
+  
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -306,14 +333,4 @@ body {
 .animation_btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: auto;
-   grid-template-areas: 
-   "btn-1 btn-1"
-   "btn-2 btn-3"
-   "btn-4 btn-5";
 }
