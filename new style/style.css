@@ -15,7 +15,7 @@ html,
 body {
 height: 100%;
 overflow: hidden;
-background-color: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+background-color: rgba(148, 187, 233, 1);
 font-family: Arial, sans-serif;
 }
 
