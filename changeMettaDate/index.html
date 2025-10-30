@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPUB Reader</title>
+  <script src="https://unpkg.com/epubjs/dist/epub.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f6f6f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #viewer {
+      width: 100%;
+      height: 90vh;
+      border: 1px solid #ccc;
+      background: white;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>EPUB Reader</h1>
+  <input type="file" id="file-input" accept=".epub">
+  <div id="viewer"></div>
+
+  <script>
+    const input = document.querySelector("#file-input");
+    const viewer = document.querySelector("#viewer");
+
+    input.addEventListener("change", async () => {
+      const file = input.files[0];
+      if (!file) return;
+
+      // Czytanie pliku jako URL z pamięci
+      const fileUrl = URL.createObjectURL(file);
+
+      // Tworzenie instancji ePub.js
+      const book = ePub(fileUrl);
+
+      // Renderowanie w kontenerze
+      const rendition = book.renderTo("viewer", {
+        width: "100%",
+        height: "90vh"
+      });
+
+      // Otwórz pierwszą stronę
+      await rendition.display();
+    });
+  </script>
+</body>
+
+</html>
