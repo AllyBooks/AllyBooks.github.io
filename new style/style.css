@@ -411,7 +411,6 @@ h1 {
 #made_by {
   position: fixed;
   width: 100%;
-  top: 90vh;
   margin: auto;
   padding: 6px 12px;
   border-radius: 8px;
@@ -427,8 +426,25 @@ h1 {
   font-weight: 600;
 }
 
-#made_by.active {
-  opacity: 0; 
+@media (max-width: 899px) {
+  #made_by {
+  top: 90vh;
+  }
+
+  #made_by.active {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  #made_by {
+    font-size: 16px;
+    bottom: 10px;
+  }
+
+  #made_by.active {
+    opacity: 1;
+  }
 }
 
 body {
