@@ -287,14 +287,13 @@ h1 {
   align-items: center;
   gap: 10px;
   transform: translateX(90%);
-  transition: transform 0.4s ease;
+  transition: transform 1s ease;
   z-index: 999;
 }
 
 #animation.open {
   will-change: transform;
   transform: translateX(5%);
-  /* Wyjeżdża */
 }
 
 /* ⚙️ przycisk */
@@ -325,6 +324,23 @@ h1 {
     0 8px 24px rgba(255, 255, 255, 0.08);
 
   transition: all 0.3s ease;
+}
+
+
+.bar {
+  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease;
+  transform-origin: center;
+}
+
+#setting-btn.active  .top {
+  width: 100%;
+  transform: rotate(45deg) translate(0.5px, 4.5px);
+}
+#setting-btn.active  .middle {
+  opacity: 0;
+}
+#setting-btn.active  .bottom {
+  transform: rotate(-45deg) translate(0.5px, -5px);
 }
 
 #setting-btn img {
@@ -381,6 +397,7 @@ h1 {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
 }
+
 
 body {
   overflow-x: hidden;
