@@ -131,9 +131,15 @@ function toggleAnimation(mode) {
   }
 
   if (mode === 1 && animacji_status !== 1) {
+    if (btn.classList.contains('active')) {
+      btn.classList.toggle('active');
+    }
     animacji_status = 1;
     spawnLeafRandom();
   } else if (mode === 2 && animacji_status !== 2) {
+    if (btn.classList.contains('active')) {
+      btn.classList.toggle('active');
+    }
     animacji_status = 2;
     spawnWindLeafRandom();
   } else {
