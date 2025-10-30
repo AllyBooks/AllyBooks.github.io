@@ -2,40 +2,53 @@
 <html lang="pl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AllyBooksWeb</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta name="theme-color" content="#94bbe9">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>AllyBooksWeb</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div id="leaf-container"></div>
+  <div id="leaf-container"></div>
 
+  <div class="background-color"></div>
+  <div class="background">
     <div class="container">
-        <img id="ava" src="img/ava.jpg" alt="Avatar"><br><br>
-        <h1>Ally Books</h1>
-        <div class="buttons">
-            <a href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
-            <a href="https://www.tiktok.com/@ally_books_comics?_t=8pgz6AAP4lM&_r=1" target="_blank">TikTok</a>
-            <a href="https://pin.it/WszvmJ1Yk" target="_blank">Pinterest</a>
-            <a href="https://ficbook.net/authors/01960fc7-b01c-70a8-bb42-298e2af331d2" target="_blank">Ficbook</a>
-        </div>
+      <img id="ava" src="img/ava.jpg" alt="Avatar"><br><br>
+      <h1>Ally Books</h1>
+      <div class="buttons grid">
+        <a class="btn-1" href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
+        <a class="btn-2" href="https://www.tiktok.com/@ally_books_comics?_t=8pgz6AAP4lM&_r=1" target="_blank">TikTok</a>
+        <a class="btn-3" href="https://pin.it/WszvmJ1Yk" target="_blank">Pinterest</a>
+        <a class="btn-4" href="https://ficbook.net/authors/01960fc7-b01c-70a8-bb42-298e2af331d2"
+          target="_blank">Ficbook</a>
+        <a class="btn-5" href="https://www.flibusta.is/a/328834" target="_blank">Flibusta</a>
+      </div>
 
-        <div id="animation">
-            <button type="button" id="setting-btn">
-              <img src="img/setting.png" alt="Ustawienia">
-            </button><br>
-          
-            <section id="setting-panel" class="tab-content">
-              <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
-              <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
-              <button class="animation_btn" onclick="toggleAnimation(4)">Stop</button>
-            </section>
-          </div>
+      <div id="animation">
+        <button type="button" id="setting-btn">
+          <img src="img/setting.png" alt="Ustawienia">
+        </button><br>
+
+        <section id="setting-panel" class="tab-content">
+          <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
+          <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
+          <button class="animation_btn" onclick="toggleAnimation(4)">
+            <svg width="14" height="14" viewBox="0 0 24 24">
+              <rect x="5" y="6" width="5" height="16" fill="currentColor" />
+              <rect x="15" y="6" width="5" height="16" fill="currentColor" />
+            </svg>
+          </button>
+        </section>
+      </div>
     </div>
+  </div>
 
-    <script src="tabView.js"></script>
-    <script src="leaves.js"></script>
+  <script src="tabView.js"></script>
+  <script src="leaves.js"></script>
 </body>
 
 </html>
