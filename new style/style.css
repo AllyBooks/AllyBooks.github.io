@@ -328,7 +328,7 @@ h1 {
 
 
 .bar {
-  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease, x 0.4s ease, y 0.4s ease;
   transform-origin: center;
 }
 
@@ -391,6 +391,30 @@ h1 {
     0 8px 24px rgba(255, 255, 255, 0.08);
 
   transition: all 0.3s ease;
+}
+
+.icon {
+  stroke-dasharray: 60; 
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+#play-btn.active .icon {
+  stroke-dashoffset: 0;
+}
+
+#play-btn.active .left {
+  transform: translate(5px, 0) rotate(45deg) scaleX(0);
+  opacity: 0;
+}
+
+#play-btn.active .right {
+  transform: translate(-2px, -2px) rotate(-45deg) scaleX(0);
+  width: 0;
+}
+
+#play-btn.active .icon {
+  points: 2,2 2,20 18,12;
 }
 
 .animation_btn:hover {

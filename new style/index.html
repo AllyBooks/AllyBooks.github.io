@@ -41,12 +41,14 @@
         <section id="setting-panel" class="tab-content">
           <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
           <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
-          <button class="animation_btn" onclick="toggleAnimation(4)">
+          <button class="animation_btn" id="play-btn" onclick="toggleAnimation(4)">
             <svg width="14" height="14" viewBox="0 0 24 24">
-              <rect x="5" y="6" width="5" height="16" fill="currentColor" />
-              <rect x="15" y="6" width="5" height="16" fill="currentColor" />
+              <polygon class="icon" points="6,4 6,24 23,12.5" fill="none" stroke="currentColor" stroke-width="3" />
+              <rect class="bar left" x="5" y="6" width="5" height="16" fill="currentColor" />
+              <rect class="bar right" x="15" y="6" width="5" height="16" fill="currentColor" />
             </svg>
           </button>
+
         </section>
       </div>
     </div>
