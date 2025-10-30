@@ -287,14 +287,13 @@ h1 {
   align-items: center;
   gap: 10px;
   transform: translateX(90%);
-  transition: transform 0.4s ease;
+  transition: transform 1s ease;
   z-index: 999;
 }
 
 #animation.open {
   will-change: transform;
   transform: translateX(5%);
-  /* Wyjeżdża */
 }
 
 /* ⚙️ przycisk */
@@ -327,8 +326,22 @@ h1 {
   transition: all 0.3s ease;
 }
 
-#setting-btn img {
-  height: 17px;
+.bar {
+  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease, x 0.4s ease, y 0.4s ease;
+  transform-origin: center;
+}
+
+#setting-btn.active .top {
+  width: 100%;
+  transform: rotate(45deg) translate(0.5px, 4.5px);
+}
+
+#setting-btn.active .middle {
+  opacity: 0;
+}
+
+#setting-btn.active .bottom {
+  transform: rotate(-45deg) translate(0.5px, -5px);
 }
 
 #setting-btn:hover {
@@ -337,17 +350,6 @@ h1 {
 }
 
 /* przyciski animacji */
-/* .tab-content {
- display: flex;
- flex-direction: row;
- gap: 10px;
- background: rgba(255, 255, 255, 0.1);
- backdrop-filter: blur(6px);
- border: 1px solid white;
- border-radius: 8px;
- padding: 10px;
-} */
-
 .animation_btn {
   display: inline-block;
   position: relative;
@@ -377,9 +379,56 @@ h1 {
   transition: all 0.3s ease;
 }
 
+.icon {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+#play-btn.active .icon {
+  stroke-dashoffset: 0;
+}
+
+#play-btn.active .left {
+  transform: translate(5px, 0) rotate(45deg) scaleX(0);
+  opacity: 0;
+}
+
+#play-btn.active .right {
+  transform: translate(-2px, -2px) rotate(-45deg) scaleX(0);
+  width: 0;
+}
+
+#play-btn.active .icon {
+  points: 2, 2 2, 20 18, 12;
+}
+
 .animation_btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
+}
+
+#made_by {
+  position: fixed;
+  width: 100%;
+  top: 90vh;
+  margin: auto;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  color: hsla(0, 0%, 100%, 0.4);
+  text-align: center;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.5s ease;
+}
+
+#made_by a {
+  color: hsla(0, 0%, 100%, 0.6);
+  font-weight: 600;
+}
+
+#made_by.active {
+  opacity: 0; 
 }
 
 body {

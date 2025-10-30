@@ -326,25 +326,22 @@ h1 {
   transition: all 0.3s ease;
 }
 
-
 .bar {
   transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease, x 0.4s ease, y 0.4s ease;
   transform-origin: center;
 }
 
-#setting-btn.active  .top {
+#setting-btn.active .top {
   width: 100%;
   transform: rotate(45deg) translate(0.5px, 4.5px);
 }
-#setting-btn.active  .middle {
+
+#setting-btn.active .middle {
   opacity: 0;
 }
-#setting-btn.active  .bottom {
-  transform: rotate(-45deg) translate(0.5px, -5px);
-}
 
-#setting-btn img {
-  height: 17px;
+#setting-btn.active .bottom {
+  transform: rotate(-45deg) translate(0.5px, -5px);
 }
 
 #setting-btn:hover {
@@ -353,17 +350,6 @@ h1 {
 }
 
 /* przyciski animacji */
-/* .tab-content {
- display: flex;
- flex-direction: row;
- gap: 10px;
- background: rgba(255, 255, 255, 0.1);
- backdrop-filter: blur(6px);
- border: 1px solid white;
- border-radius: 8px;
- padding: 10px;
-} */
-
 .animation_btn {
   display: inline-block;
   position: relative;
@@ -394,7 +380,7 @@ h1 {
 }
 
 .icon {
-  stroke-dasharray: 60; 
+  stroke-dasharray: 60;
   stroke-dashoffset: 60;
   transition: stroke-dashoffset 0.4s ease;
 }
@@ -414,7 +400,7 @@ h1 {
 }
 
 #play-btn.active .icon {
-  points: 2,2 2,20 18,12;
+  points: 2, 2 2, 20 18, 12;
 }
 
 .animation_btn:hover {
@@ -422,6 +408,28 @@ h1 {
   transform: scale(1.05);
 }
 
+#made_by {
+  position: fixed;
+  width: 100%;
+  top: 90vh;
+  margin: auto;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 10px;
+  color: hsla(0, 0%, 100%, 0.4);
+  text-align: center;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.5s ease;
+}
+
+#made_by a {
+  color: hsla(0, 0%, 100%, 0.6);
+  font-weight: 600;
+}
+
+#made_by.active {
+  opacity: 0; 
+}
 
 body {
   overflow-x: hidden;

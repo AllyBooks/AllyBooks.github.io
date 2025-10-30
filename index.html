@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   <meta name="theme-color" content="#94bbe9">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,21 +31,31 @@
 
       <div id="animation">
         <button type="button" id="setting-btn">
-          <img src="img/setting.png" alt="Ustawienia">
+          <svg width="16" height="16">
+            <rect class="bar top" x="0" y="10%" rx="2" ry="2" height="2.5" width="90%" fill="currentColor" />
+            <rect class="bar middle" x="0" y="43%" rx="2" ry="2" height="2.5" width="70%" fill="currentColor" />
+            <rect class="bar bottom" x="0" y="77%" rx="2" ry="2" height="2.5" width="100%" fill="currentColor" />
+          </svg>
         </button><br>
 
         <section id="setting-panel" class="tab-content">
           <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
           <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
-          <button class="animation_btn" onclick="toggleAnimation(4)">
+          <button class="animation_btn" id="play-btn" onclick="toggleAnimation(4)">
             <svg width="14" height="14" viewBox="0 0 24 24">
-              <rect x="5" y="6" width="5" height="16" fill="currentColor" />
-              <rect x="15" y="6" width="5" height="16" fill="currentColor" />
+              <polygon class="icon" points="6,4 6,24 23,12.5" fill="none" stroke="currentColor" stroke-width="3" />
+              <rect class="bar left" x="5" y="6" width="5" height="16" fill="currentColor" />
+              <rect class="bar right" x="15" y="6" width="5" height="16" fill="currentColor" />
             </svg>
           </button>
+
         </section>
       </div>
     </div>
+  </div>
+
+  <div id="made_by">
+    <span>made by <a href="https://t.me/vadosmik" target="_blank">@vadosmik</a></span>
   </div>
 
   <script src="tabView.js"></script>
