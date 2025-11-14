@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EPUB Reader + Metadata Editor</title>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --panel: #ffffff;
+      --muted: #666;
+      --accent: #2b7cff;
+    }
+
+    body {
+      font-family: Inter, system-ui, Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: #111;
+    }
+
+    .app {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      margin: 20px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="file"], input[type="text"], textarea {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #d6dbe6;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea { min-height: 80px; resize: vertical; }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 0;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn.secondary { background: #6c757d; }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside class="left">
+      <label>Wybierz plik .epub</label>
+      <input id="file-input" type="file" accept=".epub">
+
+      <div style="margin-top:16px">
+        <label>Metadane (edytowalne)</label>
+        <div class="meta-grid">
+          <div>
+            <label>Tytuł</label>
+            <input id="meta-title" type="text" placeholder="title">
+          </div>
+          <div>
+            <label>Autor</label>
+            <input id="meta-author" type="text" placeholder="creator">
+          </div>
+        </div>
+
+        <label>Język</label>
+        <input id="meta-lang" type="text" placeholder="pl">
+
+        <label>Identifier (ISBN)</label>
+        <input id="meta-id" type="text" placeholder="identifier">
+
+        <label>Wydawca</label>
+        <input id="meta-pub" type="text" placeholder="publisher">
+
+        <label>Opis</label>
+        <textarea id="meta-desc" placeholder="description"></textarea>
+
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button class="btn" id="apply-meta">Zapisz metadane w pamięci</button>
+          <button class="btn secondary" id="download-epub">Pobierz zmienione EPUB</button>
+        </div>
+        <div id="status">Brak pliku</div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    let zip = null, rootfilePath = null, contentDoc = null;
+    const statusEl = document.getElementById('status');
+    const metaTitle = document.getElementById('meta-title');
+    const metaAuthor = document.getElementById('meta-author');
+    const metaLang = document.getElementById('meta-lang');
+    const metaId = document.getElementById('meta-id');
+    const metaPub = document.getElementById('meta-pub');
+    const metaDesc = document.getElementById('meta-desc');
+
+    document.getElementById('file-input').addEventListener('change', async e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      statusEl.textContent = `Wczytywanie: ${file.name}...`;
+
+      try {
+        zip = await JSZip.loadAsync(await file.arrayBuffer());
+      } catch {
+        statusEl.textContent = 'Błąd: nie udało się rozpakować pliku.';
+        return;
+      }
+
+      const container = await zip.file("META-INF/container.xml")?.async("text");
+      if (!container) return statusEl.textContent = 'Brak META-INF/container.xml';
+
+      const containerDoc = new DOMParser().parseFromString(container, "application/xml");
+      rootfilePath = containerDoc.querySelector("rootfile")?.getAttribute("full-path");
+      if (!rootfilePath) return statusEl.textContent = 'Brak ścieżki rootfile w container.xml';
+
+      const opfText = await zip.file(rootfilePath)?.async("text");
+      if (!opfText) return statusEl.textContent = 'Nie znaleziono pliku content.opf';
+
+      contentDoc = new DOMParser().parseFromString(opfText, "application/xml");
+      loadMetadata();
+      statusEl.textContent = 'Załadowano EPUB — możesz edytować metadane.';
+    });
+
+    function findLocal(doc, name) {
+      return [...doc.getElementsByTagName('*')].find(e => e.localName === name);
+    }
+
+    function loadMetadata() {
+      const meta = findLocal(contentDoc, 'metadata');
+      metaTitle.value = findLocal(meta, 'title')?.textContent || '';
+      metaAuthor.value = findLocal(meta, 'creator')?.textContent || '';
+      metaLang.value = findLocal(meta, 'language')?.textContent || '';
+      metaId.value = findLocal(meta, 'identifier')?.textContent || '';
+      metaPub.value = findLocal(meta, 'publisher')?.textContent || '';
+      metaDesc.value = findLocal(meta, 'description')?.textContent || '';
+    }
+
+    document.getElementById('apply-meta').addEventListener('click', () => {
+      if (!contentDoc) return alert('Brak pliku EPUB.');
+
+      const meta = findLocal(contentDoc, 'metadata');
+      const ns = (meta.children[0]?.namespaceURI) || null;
+
+      function set(name, value) {
+        let el = findLocal(meta, name);
+        if (!el) el = ns ? contentDoc.createElementNS(ns, 'dc:' + name) : contentDoc.createElement(name);
+        el.textContent = value;
+        if (!meta.contains(el)) meta.appendChild(el);
+      }
+
+      set('title', metaTitle.value);
+      set('creator', metaAuthor.value);
+      set('language', metaLang.value);
+      set('identifier', metaId.value);
+      set('publisher', metaPub.value);
+      set('description', metaDesc.value);
+
+      statusEl.textContent = 'Zaktualizowano metadane (niezapisane w pliku).';
+    });
+
+    document.getElementById('download-epub').addEventListener('click', async () => {
+      if (!zip || !contentDoc || !rootfilePath) return alert('Brak EPUB.');
+
+      const xml = new XMLSerializer().serializeToString(contentDoc);
+      zip.file(rootfilePath, xml);
+      statusEl.textContent = 'Generowanie EPUB...';
+
+      const blob = await zip.generateAsync({ type: 'blob', compression: "DEFLATE" });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'modified.epub';
+      a.click();
+
+      statusEl.textContent = 'Pobrano zmodyfikowany plik.';
+    });
+  </script>
+</body>
+</html>
