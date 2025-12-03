@@ -399,3 +399,25 @@ h1 {
 body {
   overflow-x: hidden;
 }
+
+
+
+
+/* test */
+.heart {
+  position: fixed;
+  font-size: 18px;
+  color: white;
+  pointer-events: none;
+  animation: heartFloat 1.3s ease-out forwards;
+}
+
+@keyframes heartFloat {
+  0% { transform: translateY(0) scale(0.5); opacity: 0.7; }
+  100% { transform: translateY(-120px) scale(1.4); opacity: 0; }
+}
+
+.dark {
+  filter: brightness(0.6) saturate(0.8);
+  transition: filter 0.7s ease;
+}
