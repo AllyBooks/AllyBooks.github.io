@@ -406,7 +406,7 @@ body {
 /* test */
 .heart {
   position: fixed;
-  font-size: 18px;
+  font-size: 36px;
   color: rgb(245, 216, 216);
   pointer-events: none;
   animation: heartFloat 1.3s ease-out forwards;
@@ -414,6 +414,6 @@ body {
 }
 
 @keyframes heartFloat {
-  0% { transform: translateY(0) scale(0.5); opacity: 0.7; }
+  0% { transform: translateY(0) scale(0.6); opacity: 0.7; }
   100% { transform: translateY(-120px) scale(1.4); opacity: 0; }
 }
