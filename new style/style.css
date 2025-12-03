@@ -1,16 +1,42 @@
+/* ===================== */
+/* 🎨 ROOT — ВСЕ ЦВЕТА   */
+/* ===================== */
+:root {
+  --c-main-bg: rgba(148, 187, 233, 1);
+  --c-grad-rose: rgba(238, 174, 202, 1);
+  --c-grad-blue: rgba(148, 187, 233, 1);
+
+  --c-white: #ffffff;
+  --c-white-05: rgba(255, 255, 255, 0.05);
+  --c-white-08: rgba(255, 255, 255, 0.08);
+  --c-white-12: rgba(255, 255, 255, 0.12);
+  --c-white-15: rgba(255, 255, 255, 0.15);
+  --c-white-18: rgba(255, 255, 255, 0.18);
+  --c-white-22: rgba(255, 255, 255, 0.22);
+  --c-white-25: rgba(255, 255, 255, 0.25);
+  --c-white-3: rgba(255, 255, 255, 0.3);
+  --c-white-4: rgba(255, 255, 255, 0.4);
+  --c-white-6: hsla(0, 0%, 100%, 0.6);
+  --c-white-4h: hsla(0, 0%, 100%, 0.4);
+
+  --c-black-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* ===================== */
+/* ОСТАЛЬНОЙ CSS С VAR() */
+/* ===================== */
+
 @font-face {
   font-family: maksFont;
   src: url(MultiroundPro.otf);
 }
 
-/* Сброс отступов и настройка box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Базовые параметры страницы */
 html,
 body {
   margin: 0;
@@ -22,38 +48,25 @@ body {
   scrollbar-width: none;
   font-family: Arial, Helvetica, sans-serif;
 
-  background-color: rgba(148, 187, 233, 1);
+  background-color: var(--c-main-bg);
 }
 
-
-/* Анимация пульсации заднего фона */
 @keyframes bgPulse {
-  0% {
-    background-position: 20% 50%;
-  }
-
-  50% {
-    background-position: 80% 50%;
-  }
-
-  100% {
-    background-position: 20% 50%;
-  }
+  0% { background-position: 20% 50%; }
+  50% { background-position: 80% 50%; }
+  100% { background-position: 20% 50%; }
 }
 
 h1 {
   font-family: maksFont;
 }
 
-/* Стили для background — фон и выравнивание */
 .background-color {
   position: fixed;
-
   height: 100vh;
   width: 100vw;
 
-
-  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 30%);
+  background: radial-gradient(circle, var(--c-grad-rose) 0%, var(--c-grad-blue) 30%);
   background-size: 400% 250%;
   animation: bgPulse 15s ease infinite;
   will-change: background-position;
@@ -61,19 +74,16 @@ h1 {
 
 .background {
   height: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-/* Центровка основного содержимого */
 .container {
   position: relative;
   z-index: 1;
   text-align: center;
-  color: white;
+  color: var(--c-white);
 }
 
 #leaf-container {
@@ -89,10 +99,6 @@ h1 {
   z-index: 0;
 }
 
-
-
-/*. button */
-/* Kontener przycisków */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -106,25 +112,11 @@ h1 {
   width: 80%;
 }
 
-.btn-1 {
-  grid-area: btn-1;
-}
-
-.btn-2 {
-  grid-area: btn-2;
-}
-
-.btn-3 {
-  grid-area: btn-3;
-}
-
-.btn-4 {
-  grid-area: btn-4;
-}
-
-.btn-5 {
-  grid-area: btn-5;
-}
+.btn-1 { grid-area: btn-1; }
+.btn-2 { grid-area: btn-2; }
+.btn-3 { grid-area: btn-3; }
+.btn-4 { grid-area: btn-4; }
+.btn-5 { grid-area: btn-5; }
 
 .btn-1 {
   flex: 1 1 100%;
@@ -147,10 +139,9 @@ h1 {
   justify-content: center;
 }
 
-/* Styl szkła CRYSTAL */
+/* КНОПКИ — CRYSTAL */
 .buttons a {
   width: 125px;
-
 
   display: inline-block;
   position: relative;
@@ -162,25 +153,22 @@ h1 {
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.3px;
-  color: #ffffff;
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--c-white);
 
-  /* głębszy efekt szkła */
+  background: linear-gradient(145deg, var(--c-white-18), var(--c-white-05));
+  border: 1px solid var(--c-white-25);
+
   backdrop-filter: blur(4px) saturate(120%);
   -webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* miększy cień */
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px var(--c-white-25),
+    0 8px 24px var(--c-white-08);
 
   transition: all 0.3s ease;
 }
 
-/* Subtelny połysk przy hover */
 .buttons a::after {
   content: "";
   position: absolute;
@@ -189,29 +177,22 @@ h1 {
   width: 70%;
   height: 200%;
   transform: rotate(25deg);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg, var(--c-white-3), rgba(255, 255, 255, 0));
   filter: blur(10px);
   opacity: 0;
   transition: all 0.5s ease;
   pointer-events: none;
 }
 
-/* Efekt najechania — lekki połysk i unoszenie */
 .buttons a:hover {
   will-change: transform;
   transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.4),
-    0 10px 30px rgba(255, 255, 255, 0.15);
-}
 
-.buttons a:hover {
-  will-change: transform;
-  transform: translateY(-3px) scale(1.02);
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 10px 30px rgba(255, 255, 255, 0.12);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+    inset 0 1px 2px var(--c-white-3),
+    0 10px 30px var(--c-white-12);
+
+  background: linear-gradient(145deg, var(--c-white-22), var(--c-white-08));
 }
 
 .buttons a:hover::after {
@@ -219,7 +200,7 @@ h1 {
   left: 130%;
 }
 
-/* Стили для падающего листа */
+/* ЛИСТИКИ */
 .leaf {
   position: absolute;
   top: 0;
@@ -232,23 +213,15 @@ h1 {
 }
 
 @keyframes fallFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-/* Плавное исчезновение */
 .fade-out {
   opacity: 0;
 }
 
-/* Аватарка — круглая, с белой рамкой */
+/* АВАТАР */
 #ava {
   z-index: 1;
 
@@ -256,36 +229,31 @@ h1 {
   height: 200px;
 
   border-radius: 50%;
-  border: 4px solid white;
+  border: 4px solid var(--c-white);
   object-fit: cover;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px var(--c-black-shadow);
+
   animation: pulse 3.5s infinite;
 }
 
 @keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.07);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
 }
 
 #animation {
-
   max-width: 100vw;
   will-change: transform;
 
   position: fixed;
   bottom: 10px;
   right: 20px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
+
   transform: translateX(90%);
   transition: transform 1s ease;
   z-index: 999;
@@ -296,7 +264,7 @@ h1 {
   transform: translateX(5%);
 }
 
-/* ⚙️ przycisk */
+/* ⚙️ КНОПКА */
 #setting-btn {
   display: inline-block;
   position: relative;
@@ -307,27 +275,24 @@ h1 {
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
-  letter-spacing: 0.3px;
-  color: #ffffff;
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--c-white);
 
-  /* głębszy efekt szkła */
+  background: linear-gradient(145deg, var(--c-white-18), var(--c-white-05));
+  border: 1px solid var(--c-white-25);
+
   backdrop-filter: blur(4px) saturate(120%);
   -webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* miększy cień */
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px var(--c-white-25),
+    0 8px 24px var(--c-white-08);
 
   transition: all 0.3s ease;
 }
 
 .bar {
-  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease, x 0.4s ease, y 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease, width 0.4s ease;
   transform-origin: center;
 }
 
@@ -345,11 +310,10 @@ h1 {
 }
 
 #setting-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--c-white-4);
   transform: scale(1.1);
 }
 
-/* przyciski animacji */
 .animation_btn {
   display: inline-block;
   position: relative;
@@ -361,20 +325,18 @@ h1 {
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.3px;
-  color: #ffffff;
 
-  /* 🧊 bardziej przezroczysty gradient */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--c-white);
 
-  /* głębszy efekt szkła */
+  background: linear-gradient(145deg, var(--c-white-18), var(--c-white-05));
+  border: 1px solid var(--c-white-25);
+
   backdrop-filter: blur(4px) saturate(120%);
   -webkit-backdrop-filter: blur(4px) saturate(120%);
 
-  /* miększy cień */
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 8px 24px rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px var(--c-white-25),
+    0 8px 24px var(--c-white-08);
 
   transition: all 0.3s ease;
 }
@@ -399,12 +361,8 @@ h1 {
   width: 0;
 }
 
-#play-btn.active .icon {
-  points: 2, 2 2, 20 18, 12;
-}
-
 .animation_btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--c-white-3);
   transform: scale(1.05);
 }
 
@@ -415,36 +373,27 @@ h1 {
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 10px;
-  color: hsla(0, 0%, 100%, 0.4);
+
+  color: var(--c-white-4h);
   text-align: center;
+
   backdrop-filter: blur(6px);
   transition: opacity 0.5s ease;
 }
 
 #made_by a {
-  color: hsla(0, 0%, 100%, 0.6);
+  color: var(--c-white-6);
   font-weight: 600;
 }
 
 @media (max-width: 899px) {
-  #made_by {
-  top: 90vh;
-  }
-
-  #made_by.active {
-    opacity: 0;
-  }
+  #made_by { top: 90vh; }
+  #made_by.active { opacity: 0; }
 }
 
 @media (min-width: 900px) {
-  #made_by {
-    font-size: 16px;
-    bottom: 10px;
-  }
-
-  #made_by.active {
-    opacity: 1;
-  }
+  #made_by { font-size: 16px; bottom: 10px; }
+  #made_by.active { opacity: 1; }
 }
 
 body {
