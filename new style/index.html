@@ -58,19 +58,52 @@
     <span>made by <a href="https://t.me/vadosmik" target="_blank">@vadosmik</a></span>
   </div>
 
-  <audio id="bg-music" autoplay loop muted>
+  <audio id="bg-music" autoplay loop muted preload="auto">
     <source src="ampient.m4a" type="audio/mp4">
+    Twoja przeglądarka nie obsługuje elementu audio.
   </audio>
 
 
-  <script>
-    document.addEventListener('click', () => {
-      const audio = document.getElementById('bg-music');
-      audio.muted = false;
-      audio.play();
-    });
 
-  </script>
+<script>
+  // BEZ żadnych tokenów Telegrama w frontendzie — usuń te dane z kodu!
+  document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bg-music');
+    const playBtn = document.getElementById('play-btn'); // masz taki przycisk
+
+    // Safety: spróbuj od razu play (muted pozwala na autoplay)
+    audio.play().catch(()=>{ /* ignore */ });
+
+    // Po pierwszej interakcji użytkownika odmutowujemy i zaczynamy grać
+    const unlockAudio = () => {
+      if (audio.muted) {
+        audio.muted = false;
+        audio.play().catch(()=>{ /* autoplay może nadal być zablokowany */ });
+      }
+      // usuwamy listener, bo już niepotrzebny
+      window.removeEventListener('click', unlockAudio);
+      window.removeEventListener('touchstart', unlockAudio);
+    };
+    window.addEventListener('click', unlockAudio, { once: true });
+    window.addEventListener('touchstart', unlockAudio, { once: true });
+
+    // Toggle przyciskiem #play-btn — włącz/wyłącz muzykę i zmień klasę przycisku
+    if (playBtn) {
+      playBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (audio.paused) {
+          audio.play().catch(()=>{/* może wymagać interakcji */});
+          audio.muted = false;
+          playBtn.classList.add('active');
+        } else {
+          audio.pause();
+          playBtn.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
+
 
 
   <script src="tabView.js"></script>
