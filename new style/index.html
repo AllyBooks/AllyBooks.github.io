@@ -67,7 +67,7 @@
     const ava = document.getElementById('ava');
     ava.addEventListener('click', () => {
       const audio = document.getElementById('bg-music');
-      audio.muted = false;
+      audio.muted = !audio.muted;
       audio.play();
     });
 
