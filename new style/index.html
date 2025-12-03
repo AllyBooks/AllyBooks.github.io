@@ -59,12 +59,13 @@
   </div>
 
   <audio id="bg-music" autoplay loop muted>
-    <source src="ampient.m4a" type="audio/mp4">
+    <source src="bg-music.m4a" type="audio/mp4">
   </audio>
 
 
   <script>
-    document.addEventListener('click', () => {
+    const ava = document.getElementById('ava');
+    ava.addEventListener('click', () => {
       const audio = document.getElementById('bg-music');
       audio.muted = false;
       audio.play();
