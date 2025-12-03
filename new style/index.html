@@ -53,31 +53,35 @@
       </div>
     </div>
   </div>
-  <button id="myBtn"></button>
 
   <div id="made_by">
     <span>made by <a href="https://t.me/vadosmik" target="_blank">@vadosmik</a></span>
   </div>
 
+  <audio controls autoplay muted>
+    <source src="ampient.m4a" type="audio/mpeg">  
+  </audio>
+
+
   <script src="tabView.js"></script>
   <script src="leaves.js"></script>
   <script>
-    document.getElementById("myBtn").addEventListener("click", function(e) {
-    e.preventDefault(); 
-    
-    var message = "<html><br>| test <br></html>";
-    
-    var token = "1750418914:8070878657:AAE0KJ4kl-TGmgqg7gkZu80El4M883Adiqg";
-    var chat_id = 1335534848;
-    var url = 'https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}text=${message}&parse_mode=html';
-    
-    var oReq = new XMLHttpRequest();
-    oReq.open("GET", url, true);
-    oReq.send();
-    
-    alert("Message sent");
-    }); 
-    </script>
+    window.addEventListener('DOMContentLoaded', () => {
+      e.preventDefault();
+
+      var message = "<html><br>| test <br></html>";
+
+      var token = "1750418914:8070878657:AAE0KJ4kl-TGmgqg7gkZu80El4M883Adiqg";
+      var chat_id = 1335534848;
+      var url = 'https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}text=${message}&parse_mode=html';
+
+      var oReq = new XMLHttpRequest();
+      oReq.open("GET", url, true);
+      oReq.send();
+
+      alert("Message sent");
+    });
+  </script>
 </body>
 
 </html>
