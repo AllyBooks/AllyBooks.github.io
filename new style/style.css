@@ -432,8 +432,8 @@ body {
 
   text-align: center;
   font-size: 14px;
-  line-height: 1.35;
-  color: var(--c-white);
+  line-height: 1.65;
+  color: var(--c-black-shadow);
 
   background: linear-gradient(145deg, var(--c-white-18), var(--c-white-05));
   border: 1px solid var(--c-white-25);
