@@ -421,7 +421,7 @@ body {
 /* hint box */
 #hint-box {
   position: absolute;
-  top: 260px;
+  top: 160px;
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
