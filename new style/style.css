@@ -452,6 +452,6 @@ body {
 
 @media (max-width: 900px) {
   #hint-box{
-    top: 300;
+    top: 300px;
   }
 }
