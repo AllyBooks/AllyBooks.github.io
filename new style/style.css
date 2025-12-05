@@ -442,10 +442,9 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity .6s ease;
-
-  z-index: 999;
 }
 
 #hint-box.show {
   opacity: 1;
+  z-index: 999;
 }
