@@ -448,3 +448,10 @@ body {
   opacity: 1;
   z-index: 999;
 }
+
+
+@media (max-width: 900px) {
+  #hint-box{
+    top: 300;
+  }
+}
