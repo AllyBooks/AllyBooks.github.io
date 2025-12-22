@@ -14,11 +14,6 @@
 
 <body>
   <div id="leaf-container"></div>
-  <div id="hint-box">
-    <p>Первая буква «Л»!<br>Подсказка 2:<br>
-    Тот первый пост, который поменял жизнь каждого, кто здесь побывал.</p>
-  </div>
-
 
   <div class="background-color"></div>
   <div class="background">
@@ -26,7 +21,7 @@
       <img id="ava" src="img/ava.jpg" alt="Avatar"><br><br>
       <h1>Ally Books</h1>
       <div class="buttons grid">
-        <a class="btn-1" href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
+        <a class="btn-1" href="https://t.me/AllyBooks" target="_blank">Telegram</a>
         <a class="btn-2" href="https://www.tiktok.com/@ally_books_comics?_t=8pgz6AAP4lM&_r=1" target="_blank">TikTok</a>
         <a class="btn-3" href="https://pin.it/WszvmJ1Yk" target="_blank">Pinterest</a>
         <a class="btn-4" href="https://ficbook.net/authors/01960fc7-b01c-70a8-bb42-298e2af331d2"
@@ -75,9 +70,6 @@
       const audio = document.getElementById('bg-music');
       audio.muted = !audio.muted;
       audio.play();
-
-      const hint = document.getElementById('hint-box');
-      hint.classList.toggle('show');
     });
 
     ava.addEventListener("click", (e) => {
