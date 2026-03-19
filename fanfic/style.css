@@ -86,9 +86,14 @@ body {
   margin: 0;
 }
 
-/* ====== HEADER ====== */
+/* ====== story-content ====== */
 #story-content {
 
+}
+
+#story-content p {
+    white-space: pre-line;
+    margin-bottom: 1.5em;
 }
 
 #choices-container {
@@ -123,24 +128,30 @@ body {
   
   background-color: var(--color-surface);
   z-index: 100;
+
+  button {
+    background: none;
+    border: none;
+    color: var(--color-muted);
+  }
 }
 
-#progress-indicator {
+/* #progress-indicator {
   font-family: var(--font-main);
   font-size: 1rem;
   color: var(--color-muted);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
+} */
 
-.reader-footer::before {
+/* .reader-footer::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 3px;
   background: var(--color-text);
-  width: 0%;
+  width: 55%;
   transition: width 0.3s ease;
-}
+} */
