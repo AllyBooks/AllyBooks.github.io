@@ -1,0 +1,33 @@
+{
+  "story_title": "Tajemnica Starego Dworu",
+
+  "history": ["scene_1"],
+  "variables": {
+  },
+
+  "nodes": {
+
+    "scene_1": {
+      "text": "Stoisz przed wielkimi, dębowymi drzwiami. W oddali słychać grzmot.",
+      "choices": [
+        { "text": "Zapukaj", "next_node": "scene_2" },
+        { "text": "Uciekaj do lasu", "next_node": "scene_3" }
+      ]
+    },
+    
+    "scene_2": {
+      "text": "Drzwi same się otwierają z głośnym skrzypnięciem. W środku jest ciemno.",
+      "choices": [
+        { "text": "Wejdź do środka", "next_node": "end_win" }
+      ]
+    },
+
+    "scene_3": {
+      "text": "Biegniesz w stronę lasu, ale gubisz drogę w ciemności. To koniec.",
+      "choices": [
+        { "text": "Zacznij od nowa", "next_node": "scene_1" }
+      ]
+    }
+
+  }
+}
