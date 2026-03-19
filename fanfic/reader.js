@@ -10,9 +10,15 @@ async function loadStory() {
   try {
     const response = await fetch('test.json');
     storyData = await response.json();
-      
     titleElement.textContent = storyData.story_title;
-    historyData = storyData.history;
+
+    const savedHistory = localStorage.getItem('lorely_history');
+
+    if (savedHistory) {
+      historyData = JSON.parse(savedHistory);
+    } else {
+      historyData = storyData.history;
+    }
     variablesData = storyData.variables;
 
     renderHistory(historyData);
@@ -23,7 +29,9 @@ async function loadStory() {
 }
 
 function renderHistory(historyData) {
+  contentArea.innerHTML = '';
   let last_scene;
+
   historyData.forEach(scene => {
     last_scene = scene;
     const node = storyData.nodes[scene];
@@ -37,31 +45,49 @@ function renderHistory(historyData) {
     const btn = document.createElement('button');
     btn.textContent = choice.text;
     btn.className = 'choice-btn';
-    
+
     btn.onclick = () => renderNode(choice.next_node);
-    
+
     choicesArea.appendChild(btn);
   });
 }
 
 function renderNode(nodeId) {
   const node = storyData.nodes[nodeId];
-
   choicesArea.innerHTML = '';
-  
+
+  historyData.push(nodeId);
+  localStorage.setItem('lorely_history', JSON.stringify(historyData));
+
   const p = document.createElement('p');
   p.textContent = node.text;
   contentArea.appendChild(p);
 
+  //^ elementy \n na rózne <p> jezeli zamienie to w historyRender te
+  // const paragraphs = node.text.split('\n\n');
+  // paragraphs.forEach(text => {
+  //   const p = document.createElement('p');
+  //   p.textContent = text;
+  //   contentArea.appendChild(p);
+  // });
+
+  if (node.auto_next) {
+    renderNode(node.auto_next);
+    return;
+  }
+
+  // W przeciwnym razie renderuj przyciski
   node.choices.forEach(choice => {
     const btn = document.createElement('button');
     btn.textContent = choice.text;
-    btn.className = 'choice-btn';
-    
     btn.onclick = () => renderNode(choice.next_node);
-    
     choicesArea.appendChild(btn);
   });
+}
+
+function resetStory() {
+  localStorage.removeItem('lorely_history');
+  location.reload(); // Odśwież stronę, żeby zacząć od zera
 }
 
 // Uruchomienie na starcie
