@@ -5,12 +5,17 @@ const titleElement = document.getElementById('story-title');
 let storyData = null;
 let historyData = null;
 let variablesData = null;
+let bgMusic = null;
 
 async function loadStory() {
   try {
     const response = await fetch('test.json');
     storyData = await response.json();
     titleElement.textContent = storyData.story_title;
+
+    if (storyData.bg_music) {
+      setupMusic(storyData.bg_music);
+    }
 
     // === HISTORY ===
     const savedHistory = localStorage.getItem('lorely_history');
@@ -24,6 +29,27 @@ async function loadStory() {
   } catch (error) {
     console.error("Błąd ładowania historii:", error);
     contentArea.innerHTML = "<p>Nie udało się załadować historii.</p>";
+  }
+}
+
+function setupMusic(fileName) {
+  if (bgMusic) {
+    bgMusic.pause();
+  }
+
+  bgMusic = new Audio(fileName);
+  bgMusic.loop = true;
+  bgMusic.volume = 0.3;
+
+  const playPromise = bgMusic.play();
+
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log("Autoodtwarzanie zablokowane. Muzyka ruszy po pierwszym kliknięciu.");
+      window.addEventListener('click', () => {
+        bgMusic.play();
+      }, { once: true });
+    });
   }
 }
 
