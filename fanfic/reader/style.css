@@ -4,7 +4,7 @@
   --color-text: #cbcbcb;
   --color-muted: #888;
 
-  --font-main: "Inter", Arial, sans-serif;
+  --font-main: "Calibri", sans-serif;
   --font-size-base: 24px;
   --line-height-base: 1.6;
 
@@ -36,6 +36,7 @@
 }
 
 body {
+  font-family: var(--font-main);
   background-color: var(--color-bg);
   color: var(--color-text);
   font-size: var(--font-size-base);
@@ -89,25 +90,27 @@ body {
 /* ====== story-content ====== */
 #story-content {
   text-align: justify;
-  text-indent: 2.5em;
-  padding-inline: 1.5em;
+  text-indent: 1.75em;
+  padding-inline: var(--space-lg);
 }
 
 #choices-container {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
+  padding-inline: var(--space-lg);
   
   .choice-btn {
     background: none;
     border: none;
-    color: var(--color-muted);
-    text-align: left;
-    font-style: italic;
+    color: var(--color-text);
+    text-align: center;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: color 0.2s;
-    padding-top: 15px;
+    padding: 10px;
+    margin: 10px;
+
+    border: 1px var(--color-muted) solid;
+    border-radius: var(--radius-lg);
   }
 }
 
