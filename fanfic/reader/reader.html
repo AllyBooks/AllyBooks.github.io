@@ -49,15 +49,19 @@
     </footer>
   </main>
 
-  <div id="myMenu" class="menu" hidden>
+  <div id="myMenu" class="menu">
     <h2>Menu</h2>
 
     <div>
       <p>textSize: </p>
-      <p id="text-size-value">19px</p>
-      <input type="range" min="12" max="128" value="19" class="slider" id="textSize">
+      <p id="text-size-value" style="font-weight: bold;">19px</p>
     </div>
-    
+    <div>
+      <button id="decText">-</button>
+      <input type="range" min="12" max="42" value="19" id="textSize">
+      <button id="incText">+</button>
+    </div>
+
   </div>
 
 </body>
