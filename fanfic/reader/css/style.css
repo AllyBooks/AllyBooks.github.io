@@ -248,6 +248,7 @@ body {
   border-radius: 999px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s, color 0.4s;
 }
 
 .reader-footer button {
