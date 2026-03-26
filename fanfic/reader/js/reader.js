@@ -14,7 +14,7 @@ const MAX_VOLUME = 0.1;
 
 async function loadStory() {
   try {
-    const response = await fetch('test.json');
+    const response = await fetch('StrangerThingsFanfic.json');
     storyData = await response.json();
     titleElement.textContent = storyData.story_title;
 
