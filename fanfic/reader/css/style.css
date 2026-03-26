@@ -235,6 +235,10 @@ body {
   bottom: 0.8rem;
   left: 50%;
   transform: translateX(-50%);
+
+  white-space: nowrap;
+  flex-wrap: nowrap;
+
   display: flex;
   gap: 0.5rem;
   background: var(--color-surface);
