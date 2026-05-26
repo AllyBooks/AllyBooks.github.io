@@ -38,9 +38,6 @@
         <a class="btn-5" href="https://www.flibusta.is/a/328834" target="_blank">Flibusta</a>
 
         <a class="btn-extra" href="https://t.me/gerdassecrets" target="_blank">Telegram-канал авторов ЛВПГ </a>
-
-        <!-- <a class="btn-extra" href="https://t.me/gerdassecrets" target="_blank"><img src="img/ggaalstuk.pngws.png"> Telegram-канал авторов ЛВПГ <img src="img/ggaalstuk.pngws.png"> </a> -->
-
       </div>
 
       <div id="animation">
@@ -93,6 +90,38 @@
       heart.style.top = e.clientY + "px";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 1300);
+    });
+
+    // --- GOOGLE ANALYTICS TRACKING ---
+    const trackingMap = {
+      '.btn-1': 'click_telegram_ally',
+      '.btn-2': 'click_tiktok',
+      '.btn-3': 'click_pinterest',
+      '.btn-4': 'click_ficbook',
+      '.btn-5': 'click_flibusta',
+      '.btn-extra': 'click_telegram_gerda',
+      '#ava': 'click_avatar'
+    };
+
+    Object.entries(trackingMap).forEach(([selector, eventName]) => {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.addEventListener('click', () => {
+          if (typeof gtag === 'function') {
+            gtag('event', eventName);
+          }
+        });
+      }
+    });
+
+    // Tracking for animation buttons
+    document.querySelectorAll('.animation_btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        const animEvents = ['click_anim_falling', 'click_anim_wind', 'click_anim_play'];
+        if (typeof gtag === 'function') {
+          gtag('event', animEvents[i] || `click_anim_${i}`);
+        }
+      });
     });
   </script>
 
