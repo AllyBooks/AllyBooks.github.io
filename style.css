@@ -84,6 +84,8 @@ h1 {
   z-index: 1;
   text-align: center;
   color: var(--c-white);
+  width: 100%;
+  max-width: 800px;
 }
 
 #leaf-container {
@@ -100,13 +102,16 @@ h1 {
 }
 
 .grid {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "btn-1 btn-1"
     "btn-2 btn-3"
-    "btn-4 btn-5";
-  gap: 10px;
+    "btn-4 btn-5"
+    ". ."
+    ". ."
+    "extra extra";
+  grid-gap: 10px;
   justify-content: center;
   margin: auto;
   width: 80%;
@@ -117,10 +122,10 @@ h1 {
 .btn-3 { grid-area: btn-3; }
 .btn-4 { grid-area: btn-4; }
 .btn-5 { grid-area: btn-5; }
+.btn-extra { grid-area: extra; }
 
 .btn-1 {
-  flex: 1 1 100%;
-  text-align: center;
+  width: 100% !important;
 }
 
 .btn-2,
@@ -129,6 +134,13 @@ h1 {
 .btn-5 {
   flex: 1 1 calc(50% - 16px);
   text-align: center;
+}
+
+.btn-extra {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .buttons {
@@ -140,9 +152,7 @@ h1 {
 }
 
 /* КНОПКИ — CRYSTAL */
-.buttons a {
-  width: 125px;
-
+.buttons a { 
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -167,6 +177,12 @@ h1 {
     0 8px 24px var(--c-white-08);
 
   transition: all 0.3s ease;
+}
+
+.buttons a img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .buttons a::after {
